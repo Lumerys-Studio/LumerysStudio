@@ -1,0 +1,203 @@
+/* =========================================================================
+   Lumerys Studio — Page Commande : bouton, modale de paiement PayPal
+   Style cohérent avec styles.css (thème sombre / doré) et chatbot.css.
+   ========================================================================= */
+
+/* Bouton « Commander » avec le logo */
+.commande-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 2px solid rgba(242, 186, 82, 0.6);
+  background: linear-gradient(135deg, #f2cc80 0%, #d69f3d 100%);
+  color: #0f0905;
+  font-weight: 800;
+  font-size: 1.15rem;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(12, 10, 15, 0.5);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+}
+.commande-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.5);
+}
+.commande-btn img {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Secteur CTA de la page commande */
+.commande-cta {
+  margin-top: 26px;
+  padding: 44px 30px;
+  border-radius: 30px;
+  border: 1px solid rgba(242, 186, 82, 0.2);
+  background: linear-gradient(180deg, rgba(9, 7, 12, 0.78), rgba(15, 12, 18, 0.7));
+  text-align: center;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
+}
+.commande-cta h3 {
+  color: #fff6e0;
+  font-size: 1.4rem;
+  margin: 0 0 10px;
+  letter-spacing: 0.02em;
+}
+.commande-cta p {
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+}
+
+/* Champs du montant dans la modale */
+.amount-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.amount-option {
+  border: 1px solid rgba(242, 186, 82, 0.35);
+  background: rgba(244, 206, 134, 0.08);
+  color: #f4e6bd;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+.amount-option:hover {
+  background: rgba(244, 206, 134, 0.2);
+  transform: translateY(-2px);
+}
+.amount-option.selected {
+  background: linear-gradient(135deg, #f2cc80 0%, #d69f3d 100%);
+  color: #0f0905;
+  border-color: transparent;
+}
+.amount-custom {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.amount-custom input {
+  width: 130px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(242, 186, 82, 0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: #fff;
+  font: inherit;
+}
+
+/* Modale de paiement */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(4, 3, 6, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-box {
+  width: min(480px, 100%);
+  background: rgba(10, 8, 12, 0.98);
+  border: 1px solid rgba(242, 186, 82, 0.3);
+  border-radius: 26px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.6);
+  padding: 26px;
+  text-align: center;
+  overflow: hidden;
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.3s ease;
+}
+.modal-overlay.open .modal-box {
+  transform: translateY(0) scale(1);
+}
+.modal-box .modal-photo {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(242, 186, 82, 0.25);
+  margin-bottom: 18px;
+}
+.modal-close {
+  float: right;
+  margin-left: 10px;
+  background: transparent;
+  border: 1px solid rgba(242, 186, 82, 0.3);
+  color: #f4ecdb;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal-box h3 {
+  color: #fff6e0;
+  font-size: 1.3rem;
+  margin: 0 0 8px;
+}
+.modal-box p {
+  color: var(--muted);
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+.paypal-cta {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 30px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ffc439 0%, #f5b514 100%);
+  color: #0f0905;
+  font-weight: 800;
+  font-size: 1.05rem;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(245, 181, 20, 0.35);
+  transition: transform 0.2s ease;
+}
+.paypal-cta:hover {
+  transform: translateY(-2px);
+}
+.paypal-cta:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+.modal-note {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}

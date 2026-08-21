@@ -1,0 +1,161 @@
+/* =========================================================================
+   Lumerys Studio — En-tête moderne (header)
+   Fond glassmorphism + dégradé doré + animations d'arrivée (gauche -> droite)
+   ========================================================================= */
+
+/* ----------------------------- Fond du header moderne ----------------------------- */
+.site-header {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(720px 240px at 20% -30%, rgba(255, 214, 140, 0.16), transparent 60%),
+    radial-gradient(520px 200px at 85% 130%, rgba(244, 206, 134, 0.12), transparent 62%),
+    rgba(10, 7, 12, 0.5);
+  border-bottom: 1px solid rgba(242, 186, 82, 0.22);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  backdrop-filter: blur(20px) saturate(1.4);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+}
+
+/* Halo lumineux animé en haut du header */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 8%, rgba(255, 216, 150, 0.10) 30%, transparent 55%, rgba(255, 216, 150, 0.08) 78%, transparent 95%);
+  background-size: 250% auto;
+  animation: lumHeaderShine 8s linear infinite;
+  pointer-events: none;
+}
+@keyframes lumHeaderShine {
+  0%   { background-position: 130% center; }
+  55%  { background-position: 10% center; }
+  100% { background-position: 130% center; }
+}
+
+/* ----------------------------- Logo dans une pastille dorée ----------------------------- */
+.brand-logo {
+  border-radius: 26px;
+  border: 1px solid rgba(255, 222, 160, 0.65);
+  background:
+    radial-gradient(circle at 35% 30%, #ffe9b0, #f4ce86 70%);
+  padding: 5px;
+  box-shadow:
+    0 0 18px rgba(244, 206, 134, 0.55),
+    0 0 42px rgba(244, 206, 134, 0.25),
+    inset 0 0 8px rgba(255, 214, 140, 0.4);
+  animation: lumLogoGlow 2.6s ease-in-out infinite;
+}
+@keyframes lumLogoGlow {
+  0%, 100% { box-shadow: 0 0 14px rgba(244, 206, 134, 0.4), 0 0 34px rgba(244, 206, 134, 0.18), inset 0 0 6px rgba(255, 214, 140, 0.3); }
+  50%      { box-shadow: 0 0 26px rgba(244, 206, 134, 0.7), 0 0 60px rgba(244, 206, 134, 0.35), inset 0 0 12px rgba(255, 214, 140, 0.6); }
+}
+
+/* ----------------------------- Liquid "Lumerys Studio" ----------------------------- */
+.brand-name {
+  color: #fff0c8;
+  text-shadow:
+    0 0 8px rgba(255, 224, 150, 0.55),
+    0 0 24px rgba(255, 213, 130, 0.3);
+  animation: lumTextBreath 3.4s ease-in-out infinite;
+}
+@keyframes lumTextBreath {
+  0%, 100% { text-shadow: 0 0 6px rgba(255, 224, 150, 0.4), 0 0 18px rgba(255, 213, 130, 0.2); }
+  50%      { text-shadow: 0 0 14px rgba(255, 224, 150, 0.75), 0 0 40px rgba(255, 213, 130, 0.45); }
+}
+
+/* ----------------------------- "Pack mods sur mesure" ----------------------------- */
+.brand small {
+  color: #cab997;
+  letter-spacing: 0.12em;
+}
+.brand small::after {
+  content: "";
+  display: block;
+  height: 2px;
+  margin-top: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #f4ce86, #f7e3a9, #f4ce86, transparent);
+  background-size: 200% auto;
+  animation: lumUnderline 3s linear infinite;
+}
+@keyframes lumUnderline {
+  0%   { background-position: 200% center; }
+  100% { background-position: -100% center; }
+}
+
+/* ----------------------------- Menu : liens depuis la gauche ----------------------------- */
+.site-nav {
+  position: relative;
+}
+/* On étiquette chaque lien pour l'animation d'arrivée gauche -> droite */
+.site-nav a {
+  position: relative;
+  transform-origin: left center;
+  opacity: 0;
+  animation: lumNavIn 0.7s cubic-bezier(0.2, 0.9, 0.25, 1) both;
+}
+/* Delay en cascade : chaque lien démarre un peu après le précédent */
+.site-nav a:nth-child(1) { animation-delay: 0.05s; }
+.site-nav a:nth-child(2) { animation-delay: 0.18s; }
+.site-nav a:nth-child(3) { animation-delay: 0.31s; }
+.site-nav a:nth-child(4) { animation-delay: 0.44s; }
+.site-nav a:nth-child(5) { animation-delay: 0.57s; }
+.site-nav a:nth-child(6) { animation-delay: 0.70s; }
+.site-nav a:nth-child(7) { animation-delay: 0.83s; }
+
+@keyframes lumNavIn {
+  /* Départ : décalé loin à gauche, devient visible en arrivant à sa place */
+  0% {
+    opacity: 0;
+    transform: translateX(-70px) skewX(-12deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-14px) skewX(-3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) skewX(0deg);
+  }
+}
+
+/* Survol des liens : lueur + soulignement doré coulissant */
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 2px;
+  width: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, #f4ce86, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s ease;
+}
+.site-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Animation générale du bloc marque (arrivée douce) ---------- */
+.brand {
+  animation: lumBrandIn 0.8s cubic-bezier(0.2, 0.9, 0.25, 1) both;
+}
+@keyframes lumBrandIn {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------- Pendant l'arrivée, on évite le saut du header sur mobile ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .site-header::before,
+  .brand-logo,
+  .brand-name,
+  .brand small::after,
+  .site-nav a {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

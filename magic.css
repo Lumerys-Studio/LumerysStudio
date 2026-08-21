@@ -1,0 +1,216 @@
+/* =========================================================================
+   Lumerys Studio — Animations spectaculaires (magic.css)
+   Effets dynamiques originaux : halos flottants, hero cinématique,
+   carrousel de textes, cartes en cascade au scroll, boutons lumineux.
+   ========================================================================= */
+
+/* ----------------------------- Fond d'ambiance animé ----------------------------- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(760px 420px at 12% 18%, rgba(255, 210, 130, 0.14), transparent 58%),
+    radial-gradient(700px 460px at 88% 30%, rgba(255, 220, 140, 0.10), transparent 60%),
+    radial-gradient(900px 520px at 50% 92%, rgba(255, 205, 120, 0.08), transparent 62%);
+  animation: lumAuraDrift 26s ease-in-out infinite alternate;
+}
+@keyframes lumAuraDrift {
+  0%   { background-position: 0% 10%, 100% 20%, 50% 90%; }
+  100% { background-position: 70% 80%, 20% 10%, 15% 30%; }
+}
+
+/* ----------------------------- Halo lumineux dans le hero ----------------------------- */
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 214, 140, 0.32), rgba(255, 190, 100, 0.10) 35%, transparent 70%);
+  left: -160px;
+  top: 40%;
+  filter: blur(40px);
+  pointer-events: none;
+  animation: heroHalo float 11s ease-in-out infinite;
+}
+@keyframes heroHalo {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  50%      { transform: translate(80px, -50px) scale(1.15); opacity: 1; }
+}
+
+/* ----------------------------- Titres de section : lueur dorée animée ----------------------------- */
+.section-head h2 {
+  color: #0f0a06;
+  animation: titleGold 7s linear infinite;
+}
+@keyframes titleGold {
+  0%, 100% { text-shadow: 0 2px 6px rgba(242, 200, 120, 0.3), 0 0 18px rgba(242, 200, 120, 0.12); }
+  50%      { text-shadow: 0 3px 12px rgba(244, 206, 134, 0.55), 0 0 34px rgba(244, 206, 134, 0.28); }
+}
+
+/* ----------------------------- Boutons lumineux ----------------------------- */
+.btn, .commande-btn, .paypal-cta {
+  position: relative;
+  overflow: hidden;
+}
+/* Reflet qui traverse */
+.btn::after, .commande-btn::after, .paypal-cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-18deg);
+  animation: btnShine 3.2s linear infinite;
+}
+@keyframes btnShine {
+  0%, 80% { left: -80%; }
+  90%     { left: 130%; }
+  100%    { left: 130%; }
+}
+/* Anneau lumineux qui pulse autour du bouton */
+.btn:hover {
+  box-shadow: 0 0 0 0 rgba(244, 206, 134, 0.6);
+  animation: btnPulseRing 1.4s ease-out infinite;
+}
+@keyframes btnPulseRing {
+  0%   { box-shadow: 0 0 0 0 rgba(244, 206, 134, 0.6); }
+  70%  { box-shadow: 0 0 0 16px rgba(244, 206, 134, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(244, 206, 134, 0); }
+}
+
+/* ----------------------------- Révélation des cartes (site.js) ----------------------------- */
+.lum-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--d, 0s);
+  will-change: opacity, transform;
+}
+.lum-reveal[data-anim="left"]  { transform: translateX(-42px); }
+.lum-reveal[data-anim="right"] { transform: translateX(42px); }
+.lum-reveal[data-anim="zoom"]  { transform: scale(0.9); }
+.lum-reveal.lum-in {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* Hover 3D léger au survol des cartes */
+.intro-grid > div,
+.benefit-cards article,
+.comparison-card,
+.plan-grid article,
+.process-grid > div,
+.faq-grid > div,
+.devis-card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.35s ease;
+  border: 1px solid rgba(242, 186, 82, 0.18) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+.intro-grid > div:hover,
+.benefit-cards article:hover,
+.comparison-card:hover,
+.plan-grid article:hover,
+.process-grid > div:hover,
+.faq-grid > div:hover,
+.devis-card:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(244, 206, 134, 0.3);
+  border-color: rgba(242, 186, 82, 0.4) !important;
+}
+
+/* Bordure lumineuse balayante sur certaines cartes */
+.intro-grid > div::before,
+.benefit-cards article::before,
+.comparison-card::before,
+.plan-grid article::before,
+.process-grid > div::before,
+.devis-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(120deg, transparent 15%, rgba(255, 214, 140, 0.4) 40%, rgba(244, 206, 134, 0.8) 50%, transparent 75%);
+  background-size: 250% auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.intro-grid > div:hover::before,
+.benefit-cards > article:hover::before,
+.comparison-card:hover::before,
+.plan-grid > article:hover::before,
+.process-grid > div:hover::before,
+.devis-card:hover::before {
+  opacity: 1;
+  animation: cardGlowSwipe 1.4s ease-in-out infinite;
+}
+@keyframes cardGlowSwipe {
+  0%, 100% { background-position: 250% center; }
+  50%      { background-position: 10% center; }
+}
+
+/* ----------------------------- Image hero : zoom lent et lueur ----------------------------- */
+.hero-visual img {
+  animation: heroImgFloat 9s ease-in-out infinite;
+}
+@keyframes heroImgFloat {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%      { transform: scale(1.05) translateY(-8px); }
+}
+.hero-visual {
+  position: relative;
+  overflow: hidden;
+}
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, transparent 20%, rgba(255, 216, 140, 0.16) 45%, transparent 70%);
+  background-size: 230% auto;
+  animation: heroSheen 6s linear infinite;
+  pointer-events: none;
+}
+@keyframes heroSheen {
+  0%, 30%, 100% { background-position: 200% center; }
+  60%           { background-position: 0% center; }
+}
+
+/* ----------------------------- Titre du hero animé ----------------------------- */
+.hero h1 {
+  color: #fffdfa;
+  animation: lumHeroGlow 5s ease-in-out infinite;
+}
+@keyframes lumHeroGlow {
+  0%, 100% { text-shadow: 0 2px 8px rgba(255, 230, 170, 0.25), 0 0 30px rgba(255, 220, 140, 0.12); }
+  50%      { text-shadow: 0 3px 14px rgba(255, 235, 180, 0.5), 0 0 60px rgba(255, 220, 140, 0.3); }
+}
+
+/* ----------------------------- Footer doux ----------------------------- */
+.site-footer {
+  color: #e9dcb4;
+  transition: color 0.4s ease;
+}
+.site-footer a {
+  color: #f4ce86;
+  text-decoration: underline;
+}
+
+/* ----------------------------- Réduction de mouvement ----------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  body::after, .hero::after, .hero-visual img, .hero-visual::after,
+  .hero h1, .section-head h2, .btn::after, .btn, .lum-reveal,
+  .intro-grid > div::before, .benefit-cards article::before,
+  .comparison-card::before, .plan-grid article::before,
+  .process-grid > div::before, .devis-card::before {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .lum-reveal { opacity: 1 !important; transform: none !important; }
+}

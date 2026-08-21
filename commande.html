@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumerys Studio - Commande</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="header-anim.css" />
+  <link rel="stylesheet" href="chatbot.css" />
+  <link rel="stylesheet" href="commande.css" />
+  <link rel="stylesheet" href="magic.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand">
+        <img src="Logo.png" alt="Lumerys Studio" class="brand-logo" />
+        <div>
+          <span class="brand-name">Lumerys Studio</span>
+          <small>Pack mods sur mesure</small>
+        </div>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html">Services</a>
+        <a href="formules.html">Formules</a>
+        <a href="processus.html">Processus</a>
+        <a href="devis.html">Devis</a>
+        <a href="commande.html">Commande</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">COMMANDE</span>
+          <h1>Vous savez exactement ce que vous voulez</h1>
+          <p>Vous avez déjà fait votre devis, vous pouvez passer à la commande dès maintenant.</p>
+          <button type="button" class="commande-btn" id="openCommandeModal">
+            <img src="Logo.png" alt="Lumerys Studio" /> Commander
+          </button>
+        </div>
+        <div class="hero-visual">
+          <img src="LumerysStudio.png" alt="Lumerys Studio" />
+        </div>
+      </section>
+
+      <section class="commande-cta">
+        <h3>Passez commande en toute simplicité</h3>
+        <p>Choisissez le montant correspondant à votre projet (entre 5 € et 100 €), puis réglez en toute sécurité via PayPal. Une fois le paiement effectué, complétez le formulaire ci-dessous pour que votre commande soit traitée.</p>
+        <button type="button" class="commande-btn" id="openCommandeModal2">
+          <img src="Logo.png" alt="Lumerys Studio" /> Commander maintenant
+        </button>
+      </section>
+
+      <section class="devis-section" id="commande-form">
+        <div class="section-head">
+          <span>Enregistrez votre commande</span>
+          <h2>Complétez vos informations après le paiement</h2>
+        </div>
+
+        <div class="devis-form-card">
+          <h3>Détails de la commande</h3>
+          <form action="mailto:LumerysStudio@outlook.fr" method="post" enctype="text/plain">
+            <div class="form-grid">
+              <label>
+                <span>Nom</span>
+                <input type="text" name="Nom" placeholder="Votre nom" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="Email" placeholder="Votre adresse email" required />
+              </label>
+              <label>
+                <span>Montant payé (€)</span>
+                <input type="number" name="Montant" placeholder="Ex : 25" min="5" max="100" required />
+              </label>
+              <label>
+                <span>Numéro / référence PayPal</span>
+                <input type="text" name="ReferencePayPal" placeholder="ID de transaction (facultatif)" />
+              </label>
+              <label>
+                <span>Jeu concerné</span>
+                <input type="text" name="Jeu" placeholder="Ex : Skyrim, GTA V, Cyberpunk..." required />
+              </label>
+              <label>
+                <span>Version du jeu</span>
+                <input type="text" name="VersionJeu" placeholder="Ex : 1.5.97, 1.6.x..." />
+              </label>
+              <label>
+                <span>Système d’exploitation</span>
+                <input type="text" name="SystemeExploitation" placeholder="Windows 11, Linux, macOS..." />
+              </label>
+              <label>
+                <span>Type de pack souhaité</span>
+                <input type="text" name="TypePack" placeholder="Réalisme, immersion, gameplay, graphisme..." required />
+              </label>
+              <label>
+                <span>Formule choisie</span>
+                <input type="text" name="Formule" placeholder="Essentiel, Confort ou Premium" />
+              </label>
+              <label>
+                <span>Mods déjà présents</span>
+                <input type="text" name="ModsExistants" placeholder="Mods déjà installés ou à éviter" />
+              </label>
+              <label>
+                <span>Style visuel attendu</span>
+                <input type="text" name="StyleVisuel" placeholder="Ciné, naturel, sombre, très détaillé..." />
+              </label>
+              <label>
+                <span>Discord (pour le suivi)</span>
+                <input type="text" name="Discord" placeholder="Votre pseudo Discord" />
+              </label>
+            </div>
+
+            <label class="full-width">
+              <span>Détails du projet</span>
+              <textarea name="Details" rows="8" placeholder="Décrivez précisément votre besoin, vos mods souhaités, les contraintes techniques, la version du jeu, la qualité visuelle attendue, la stabilité désirée, etc." required></textarea>
+            </label>
+
+            <label class="full-width">
+              <span>Liens ou fichiers utiles</span>
+              <textarea name="Liens" rows="4" placeholder="Ajoutez des liens, captures, mods, versions, ou toute information utile."></textarea>
+            </label>
+
+            <button type="submit" class="btn btn-primary">Envoyer ma commande</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modale de paiement PayPal -->
+    <div class="modal-overlay" id="commandeModal">
+      <div class="modal-box">
+        <button type="button" class="modal-close" id="closeCommandeModal" aria-label="Fermer">&times;</button>
+        <img class="modal-photo" src="LumerysStudio.png" alt="Lumerys Studio" />
+        <h3>Choisissez votre montant</h3>
+        <p>Sélectionnez le montant de votre commande (entre 5 € et 100 €), puis vous serez redirigé vers PayPal pour régler en toute sécurité.</p>
+        <div class="amount-options" id="amountOptions">
+          <button type="button" class="amount-option" data-amount="5">5 €</button>
+          <button type="button" class="amount-option" data-amount="10">10 €</button>
+          <button type="button" class="amount-option" data-amount="20">20 €</button>
+          <button type="button" class="amount-option" data-amount="30">30 €</button>
+          <button type="button" class="amount-option" data-amount="50">50 €</button>
+          <button type="button" class="amount-option" data-amount="75">75 €</button>
+          <button type="button" class="amount-option" data-amount="100">100 €</button>
+        </div>
+        <div class="amount-custom">
+          <span>Ou saisissez un montant :</span>
+          <input type="number" id="customAmount" min="5" max="100" placeholder="25" />
+          <span>€</span>
+        </div>
+        <button type="button" class="paypal-cta" id="paypalSubmit" disabled>
+          Payer avec PayPal
+        </button>
+        <span class="modal-note">Paiement sécurisé via PayPal · Une fois le paiement effectué, revenez sur cette page pour remplir le formulaire de commande.</span>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <span>© 2026 Lumerys Studio. Service de packs mods personnalisés. Compatibility dépend du jeu, des mods et de la configuration.</span>
+    </footer>
+  </div>
+
+  <script src="chatbot.js" defer></script>
+  <script>
+    (function () {
+      var PAYPAL_USER = 'Gizgous';
+      var modal = document.getElementById('commandeModal');
+      var openBtns = document.querySelectorAll('#openCommandeModal, #openCommandeModal2');
+      var closeBtn = document.getElementById('closeCommandeModal');
+      var paypalSubmit = document.getElementById('paypalSubmit');
+      var customAmount = document.getElementById('customAmount');
+      var selectedAmount = null;
+
+      function openModal() {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      openBtns.forEach(function (btn) {
+        btn.addEventListener('click', openModal);
+      });
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+
+      // Sélection d'un montant prédéfini
+      var options = document.querySelectorAll('.amount-option');
+      function selectAmount(val) {
+        selectedAmount = Math.max(5, Math.min(100, parseInt(val, 10) || 0));
+        options.forEach(function (o) {
+          o.classList.toggle('selected', parseInt(o.getAttribute('data-amount'), 10) === selectedAmount);
+        });
+        customAmount.value = '';
+        paypalSubmit.disabled = selectedAmount >= 5 && selectedAmount <= 100 ? false : true;
+      }
+      options.forEach(function (o) {
+        o.addEventListener('click', function () {
+          selectAmount(o.getAttribute('data-amount'));
+        });
+      });
+
+      // Montant personnalisé
+      customAmount.addEventListener('input', function () {
+        var v = parseInt(customAmount.value, 10);
+        options.forEach(function (o) { o.classList.remove('selected'); });
+        if (v >= 5 && v <= 100) {
+          selectedAmount = v;
+          paypalSubmit.disabled = false;
+        } else {
+          selectedAmount = null;
+          paypalSubmit.disabled = true;
+        }
+      });
+
+      // Direction PayPal avec le montant
+      paypalSubmit.addEventListener('click', function () {
+        if (!selectedAmount) return;
+        var url = 'https://paypal.me/' + PAYPAL_USER + '/' + selectedAmount;
+        window.open(url, '_blank', 'noopener');
+        closeModal();
+      });
+    })();
+  </script>
+  <script src="magic.js" defer></script>
+</body>
+</html>

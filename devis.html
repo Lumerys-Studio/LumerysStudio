@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumerys Studio - Devis</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="header-anim.css" />
+  <link rel="stylesheet" href="magic.css" />
+  <link rel="stylesheet" href="chatbot.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand">
+        <img src="Logo.png" alt="Lumerys Studio" class="brand-logo" />
+        <div>
+          <span class="brand-name">Lumerys Studio</span>
+          <small>Pack mods sur mesure</small>
+        </div>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html">Services</a>
+        <a href="formules.html">Formules</a>
+        <a href="processus.html">Processus</a>
+        <a href="devis.html">Devis</a>
+        <a href="commande.html">Commande</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">DEVIS</span>
+          <h1>Demandez votre devis personnalisé</h1>
+          <p>Envoyez-moi votre projet, votre jeu et votre configuration pour obtenir une proposition adaptée.</p>
+          <a href="mailto:LumerysStudio@outlook.fr" class="btn btn-primary">Contacter</a>
+        </div>
+        <div class="hero-visual">
+          <img src="LumerysStudio.png" alt="Lumerys Studio" />
+        </div>
+      </section>
+
+      <section class="devis-section" id="devis">
+        <div class="section-head">
+          <span>Demande de devis</span>
+          <h2>Contactez-moi pour votre pack personnalisé</h2>
+        </div>
+        <div class="devis-grid">
+          <div class="devis-card">
+            <h3>Informations</h3>
+            <p>Pour recevoir une proposition claire, indiquez les éléments suivants :</p>
+            <ul>
+              <li>Jeu concerné</li>
+              <li>Objectif souhaité : réalisme, immersion, graphisme, ambiance, etc.</li>
+              <li>Configuration PC : processeur, carte graphique, mémoire</li>
+              <li>Mods déjà installés ou envies spécifiques</li>
+              <li>Préférences de performance ou d’aspect visuel</li>
+            </ul>
+          </div>
+          <div class="devis-card contact-card">
+            <h3>Contact direct</h3>
+            <p><strong>Email :</strong> <a href="mailto:LumerysStudio@outlook.fr">LumerysStudio@outlook.fr</a></p>
+            <p><strong>Discord :</strong> <span>lumerysstudio</span></p>
+            <p>Envoyez vos informations et je vous propose une formule adaptée à votre jeu et à votre matériel.</p>
+          </div>
+        </div>
+
+        <div class="devis-form-card">
+          <h3>Formulaire de demande</h3>
+          <form action="mailto:LumerysStudio@outlook.fr" method="post" enctype="text/plain">
+            <div class="form-grid">
+              <label>
+                <span>Nom</span>
+                <input type="text" name="Nom" placeholder="Votre nom" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="Email" placeholder="Votre adresse email" required />
+              </label>
+              <label>
+                <span>Jeu concerné</span>
+                <input type="text" name="Jeu" placeholder="Ex : Skyrim, GTA V, Cyberpunk..." required />
+              </label>
+              <label>
+                <span>Système d’exploitation</span>
+                <input type="text" name="SystemeExploitation" placeholder="Windows 11, Linux, macOS..." />
+              </label>
+              <label>
+                <span>Objectif souhaité</span>
+                <input type="text" name="Objectif" placeholder="Réalisme, immersion, graphisme, ambiance..." required />
+              </label>
+              <label>
+                <span>Configuration PC</span>
+                <input type="text" name="Configuration" placeholder="Processeur, GPU, RAM..." required />
+              </label>
+              <label>
+                <span>Mods déjà installés</span>
+                <input type="text" name="ModsExistants" placeholder="Mods déjà présents ou à éviter" />
+              </label>
+              <label>
+                <span>Préférences de performance</span>
+                <input type="text" name="Performance" placeholder="FPS, fluidité, qualité visuelle..." />
+              </label>
+            </div>
+
+            <label class="full-width">
+              <span>Votre message / besoins précis</span>
+              <textarea name="Message" rows="6" placeholder="Décrivez votre projet, vos envies, votre style, vos contraintes..." required></textarea>
+            </label>
+
+            <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Lumerys Studio. Service de packs mods personnalisés. Compatibility dépend du jeu, des mods et de la configuration.</span>
+    </footer>
+  </div>
+
+  <script src="chatbot.js" defer></script>
+  <script src="magic.js" defer></script>
+</body>
+</html>
