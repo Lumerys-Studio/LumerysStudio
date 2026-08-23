@@ -68,11 +68,8 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 10px 0 14px;
+  padding: 0;
   margin-top: 0;
-  background: rgba(8, 6, 10, 0.55);
-  border-bottom: 1px solid rgba(242, 186, 82, 0.15);
-  backdrop-filter: blur(16px);
 }
 
 .brand {
@@ -84,49 +81,89 @@ img {
 .brand-logo {
   width: 64px;
   height: 64px;
-  border-radius: 999px;
-  background: transparent;
-  border: none;
-  padding: 0;
-  object-fit: cover;
-  box-shadow: none;
 }
 
 .brand-name {
   display: block;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #f4d06b;
-  text-shadow: 0 0 6px rgba(244, 208, 107, 0.55), 0 0 12px rgba(244, 208, 107, 0.25);
+  color: #fff0c8;
+  text-shadow: 0 0 8px rgba(255, 224, 150, 0.45), 0 0 20px rgba(255, 213, 130, 0.2);
+}
+
+.brand small {
+  display: inline-block;
+  color: #cab997;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.brand small::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #f4ce86, #f7e3a9, #f4ce86, transparent);
+  background-size: 200% auto;
+  animation: lumUnderline 3s linear infinite;
+}
+
+@keyframes lumUnderline {
+  0%   { background-position: 200% center; }
+  100% { background-position: -100% center; }
 }
 
 .site-nav {
   display: flex;
-  gap: 22px;
+  gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .site-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 20px;
+  border-radius: 999px;
   color: #f2c96b;
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 700;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
-  text-shadow: 0 0 4px rgba(242, 201, 107, 0.4);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(242, 186, 82, 0.15);
+  transition: all 0.35s cubic-bezier(0.2, 0.9, 0.25, 1);
 }
 
 .site-nav a:hover {
+  background: rgba(244, 206, 134, 0.15);
+  border-color: rgba(244, 206, 134, 0.4);
   color: #ffd977;
-  text-shadow: 0 0 8px rgba(255, 217, 119, 0.6);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(244, 206, 134, 0.2);
 }
 
-.site-nav a,
-.brand-name,
-.brand small,
-.section-head span,
-.section-head h2 {
-  color: var(--text);
+.site-nav a::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(244, 206, 134, 0.25), rgba(242, 186, 82, 0.08));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.site-nav a:hover::before {
+  opacity: 1;
 }
 
 .hero {
@@ -519,23 +556,75 @@ img {
 }
 
 @media (max-width: 720px) {
+  html, body {
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: contain;
+  }
+
   .site-header {
+    margin: 10px 12px 0;
+    padding: 12px 16px;
+    gap: 12px;
+    border-radius: 28px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
   }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+  }
+
+  .brand-name {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+
+  .brand small {
+    font-size: 0.72rem;
+  }
+
   .site-nav {
+    gap: 6px;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
+
+  .site-nav a {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+  }
+
+  .hero-copy {
+    background: rgba(14, 11, 18, 0.72);
+  }
+
+  .intro-grid > div,
+  .benefit-cards article,
+  .comparison-card,
+  .plan-grid article,
+  .process-grid > div,
+  .faq-grid > div,
+  .contact-card,
+  .devis-card {
+    background: rgba(18, 14, 22, 0.68);
+  }
+
+  .devis-form-card {
+    background: rgba(18, 14, 22, 0.72);
+  }
+
   .hero {
     padding-top: 18px;
   }
   .hero-copy h1 {
     font-size: 2.5rem;
-  }
-  .brand-logo {
-    width: 52px;
-    height: 52px;
   }
 }
 
