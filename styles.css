@@ -392,7 +392,8 @@ img {
 .price-note {
   margin-top: 20px;
   font-size: 0.95rem;
-  color: var(--muted);
+  color: #000000;
+  font-weight: 800;
   line-height: 1.6;
 }
 
